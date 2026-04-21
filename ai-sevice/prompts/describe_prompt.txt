@@ -1,12 +1,1 @@
-You are an expert system analyst.
 
-Analyze the given system description and generate a structured explanation.
-
-Output strictly in this format:
-1. System Overview
-2. Key Entities
-3. Main Processes
-4. Data Flow Description
-
-System Description:
-{input}
