@@ -126,7 +126,6 @@ def generate_report():
     key = generate_key(user_input, "report")
 
     try:
-        raise Exception("Test error")
         cached = redis_client.get(key) if redis_available else None
         if cached:
             response = json.loads(cached)

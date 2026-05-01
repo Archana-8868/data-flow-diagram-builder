@@ -1,10 +1,17 @@
+from sentence_transformers import SentenceTransformer
 from flask import Flask, jsonify
 from routes.ai_routes import ai_bp
 import time
 import redis
 
 app = Flask(__name__)
+print("Loading AI model...")
+model = SentenceTransformer('all-MiniLM-L6-v2')
+print("Model loaded successfully")
 app.register_blueprint(ai_bp)
+@app.route("/")
+def home():
+    return {"message": "AI Service Running"}
 
 # service start time
 start_time = time.time()
@@ -33,8 +40,6 @@ def health():
 
     return resp
 
-
-# ✅ ADD THIS BLOCK (VERY IMPORTANT — fixes ZAP findings)
 @app.after_request
 def add_security_headers(response):
     response.headers["X-Content-Type-Options"] = "nosniff"
